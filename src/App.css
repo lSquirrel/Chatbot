@@ -1,0 +1,163 @@
+#root {
+  max-width: 1280px;
+  height: 100%;
+
+  --c1: #ffffff;
+  --cprimary: #1677ff;
+  --cdanger: #ff4d4f;
+
+  --f1: 11px;
+  --f2: 12px;
+  --f3: 13px;
+  --f4: 14px;
+  --f5: 15px;
+  --f6: 16px;
+
+  --xs:5px;
+  --sm:10px;
+  --md:15px;
+  --lg:20px;
+}
+
+.inline {
+  display: inline-block;
+}
+.relative {
+  position: relative;
+}
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+.center {
+  text-align: center;
+}
+.clearfix {
+  clear: both;
+}
+.bold {
+  font-weight: bold;
+}
+.w {
+  width: 100%;
+}
+.h {
+  height: 100%;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.pointer {
+  cursor: pointer;
+}
+.box {
+  box-sizing: border-box;
+}
+.fleft {
+  float: left;
+}
+.fright {
+  float: right;
+}
+
+.paxs {
+  padding: var(--xs);
+}
+.ptxs {
+  padding-top: var(--xs);
+}
+.pbxs {
+  padding-bottom: var(--xs);
+}
+.plxs {
+  padding-left: var(--xs);
+}
+.prxs {
+  padding-right: var(--xs);
+}
+.pasm {
+  padding: var(--sm);
+}
+.ptsm {
+  padding-top: var(--sm);
+}
+.pbsm {
+  padding-bottom: var(--sm);
+}
+.plsm {
+  padding-left: var(--sm);
+}
+.prsm {
+  padding-right: var(--sm);
+}
+.ptmd {
+  padding-top: var(--md);
+}
+.pbmd {
+  padding-bottom: var(--md);
+}
+.pblg {
+  padding-bottom: var(--lg);
+}
+.mrxs {
+  margin-right: var(--xs);
+}
+.mlxs {
+  margin-left: var(--xs);
+}
+.mtmd {
+  margin-top: var(--md);
+}
+
+.fs1 {
+  font-size: var(--f1);
+}
+.fs2 {
+  font-size: var(--f2);
+}
+.fs3 {
+  font-size: var(--f3);
+}
+.fs4 {
+  font-size: var(--f4);
+}
+.fs5 {
+  font-size: var(--f5);
+}
+.fs6 {
+  font-size: var(--f6);
+}
+
+.c1 {
+  color: var(--c1);
+}
+.cprimary {
+  color: var(--cprimary);
+}
+.cdanger {
+  color: var(--cdanger);
+}
+.bgc1 {
+  background-color: var(--c1);
+}
+.bgcprimary {
+  background-color: var(--cprimary);
+}
+
+/* flex布局 */
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-item-auto {
+  flex: 1 1 auto;
+}
+.flex-item-fixed {
+  flex: 0 0 auto;
+}
