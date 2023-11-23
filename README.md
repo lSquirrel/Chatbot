@@ -8,7 +8,7 @@ node use v18+
 `npm install`
 
 # 运行
-`npm run start`
+`npm run dev`
 
 # 演示
 |![手机端演示GIF](public/display/mobile.GIF) | 
