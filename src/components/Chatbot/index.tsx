@@ -34,36 +34,42 @@ const getChatReply = async (input: Message, cb: Function) => {
     content: ''
   };
   cb(replyMessage);
-  const response = await fetch(`http://localhost:3000/chat`, {
-    body: JSON.stringify(input),
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "omit",
-    mode: "cors"
-  });
-  if (!response.body) {
+  try {
+    const response = await fetch(`http://localhost:3000/chat`, {
+      body: JSON.stringify(input),
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "omit",
+      mode: "cors"
+    });
+    if (!response.body) {
+      replyMessage.content = failTips;
+      return replyMessage;
+    }
+    if (response.status == 200) {
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+          break;
+        }
+        const data = decoder.decode(value);
+        if (data.slice(-6) === "[Done]") { // "[Done]"是结束标识
+          replyMessage.content += data.slice(0, -6); // 去掉结束标识部分
+          return replyMessage;
+        }
+        replyMessage.content += data;
+        cb(replyMessage);
+      }
+    }
+  } catch (error) {
     replyMessage.content = failTips;
     return replyMessage;
   }
-  if (response.status == 200) {
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) {
-        break;
-      }
-      const data = decoder.decode(value);
-      if (data.slice(-6) === "[Done]") { // "[Done]"是结束标识
-        replyMessage.content += data.slice(0, -6); // 去掉结束标识部分
-        return replyMessage;
-      }
-      replyMessage.content += data;
-      cb(replyMessage);
-    }
-  }
+  
   return replyMessage;
 }
 
