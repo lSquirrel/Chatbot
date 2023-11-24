@@ -41,8 +41,8 @@ const getChatReply = async (input: Message, cb: Function) => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "omit",
-      mode: "cors"
+      credentials: "omit", // 不发送cookies
+      mode: "cors" // 跨域
     });
     if (!response.body) {
       replyMessage.content = failTips;
@@ -53,14 +53,10 @@ const getChatReply = async (input: Message, cb: Function) => {
       const decoder = new TextDecoder();
       while (true) {
         const { value, done } = await reader.read();
-        if (done) {
-          break;
-        }
-        const data = decoder.decode(value);
-        if (data.slice(-6) === "[Done]") { // "[Done]"是结束标识
-          replyMessage.content += data.slice(0, -6); // 去掉结束标识部分
+        if (done) { // 读不到更多数据 把最终结果return出去 结束循环
           return replyMessage;
         }
+        const data = decoder.decode(value);
         replyMessage.content += data;
         cb(replyMessage);
       }
