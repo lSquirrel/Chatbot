@@ -72,3 +72,33 @@ footer {
   padding: 6px 10px;
   border-radius: 6px;
 }
+
+@media (prefers-color-scheme: light) {
+  .dialog-container {
+    background-color: #f1f1f1;
+  }
+  header {
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+  }
+  .footTip {
+    background-color: #fafafa;
+    color: #333;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dialog-container {
+    background-color: rgb(32, 35, 36);
+  }
+  header {
+    background-color: rgb(38, 42, 43);
+    border-bottom: 1px solid rgb(58, 62, 65);
+  }
+  .footTip {
+    background-color: rgb(27, 29, 30);
+    color: rgb(232, 230, 227);
+  }
+  .chatTime {
+    background-color: rgb(34, 36, 38);
+  }
+}

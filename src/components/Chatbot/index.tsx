@@ -12,7 +12,7 @@ interface Message {
   role: string, // 发送这角色：user assistant
   content: string | null // 消息内容
 }
-const failTips = 'Sorry, network anomaly, please try again later.';
+const failTips = 'Sorry, apiKey error, please try again.';
 
 // 获取历史记录接口
 const getChatHistory = async () => {
@@ -254,6 +254,7 @@ const ChatDialog = React.memo((props: any) => {
               rules={[{ required: true, message: '' }]}
             >
               <Input
+                className="input"
                 style={{ width: `${width - 50}px` }}
                 placeholder="Type a message"
               />

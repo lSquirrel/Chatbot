@@ -161,3 +161,23 @@
 .flex-item-fixed {
   flex: 0 0 auto;
 }
+
+@media (prefers-color-scheme: light) {
+  .bgc1 {
+    background-color: var(--c1);
+  }
+  .input {
+    background-color: var(--c1);
+    border-color: #ddd;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bgc1 {
+    background-color: rgb(24, 26, 27);
+  }
+  .input {
+    background-color: rgb(24, 26, 27);
+    border-color: rgb(13, 70, 149);
+    color: var(--c1);
+  }
+}
