@@ -16,12 +16,12 @@ node use v20+
 
 ## 安装
 ```
-npm install react-chatbot
+npm install isquirrel-react-chatbot
 ```
 
 ## 使用方式
 ```javascript
-import Chatbot, { Dialogue } from "react-chatbot";
+import Chatbot, { Dialogue } from "isquirrel-react-chatbot";
 
 const App = () => {
   // 聊天问答列表
