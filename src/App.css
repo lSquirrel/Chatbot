@@ -148,6 +148,10 @@
   background-color: var(--cprimary);
 }
 
+.bdt {
+  border-top: 1px solid #ddd;
+}
+
 /* flex布局 */
 .flex {
   display: flex;

@@ -1,92 +1,47 @@
-import { useState } from "react";
-import Chatbot from "../../components/Chatbot";
-import { Props } from "../../lib/common";
-import { Input, Form, Space, Button, Alert } from 'antd';
+import Chatbot, { Dialogue, Message } from "../../../packages/Chatbot"
 
-interface FormValues {
-  apiKey: string
-}
-interface SetCbArgs {
-  error?: string,
-  status?: number
-}
-
-const setApiKey = async (apiKey: string, cb: Function) => {
-  try {
-    const response = await fetch(`http://localhost:3000/apiKey`, {
-      body: JSON.stringify({
-        apiKey
-      }),
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "omit", // 不发送cookies
-      mode: "cors" // 跨域
-    });
-    if (!response.body) {
-      // 报错
-      cb({
-        error: 'failed'
-      })
+const Home = () => {
+  const dialogues: Dialogue[] = [
+    {
+      question: '你好',
+      reply: '您好，请问有什么可以帮助您的吗？'
+    },
+    {
+      question: '购买商品流程',
+      reply: '打开APP，进入商品列表页浏览，选择感兴趣的商品点击，进入详情页，查看详细信息。',
+      isDefault: true
+    },
+    {
+      question: '退款流程',
+      reply: '打开APP，点击“我的”，点击”订单“，在订单列表找到想要退款的物品，点击”退款“按钮。',
+      isDefault: true
+    },
+    {
+      question: '怎么申请退款或者退货',
+      reply: '打开APP，点击”我的“，点击”订单“，在订单列表找到想要退款的物品，点击”退款“或者”退货“按钮。',
+    },
+    {
+      question: '卖家不退款怎么办',
+      reply: '如您已经申请退款，卖家超时未处理，系统会自动同意您的退款申请；如果卖家拒绝了您的申请，您可选择平台介入，我们帮您处理。'
     }
-    if (response.status == 200) {
-      // 成功
-      cb({
-        status: 200
-      })
-    }
-  } catch (error) {
-    // 报错
-    cb({
-      error: 'error：' + JSON.stringify(error)
-    })
-  }
-}
-
-const Home = (props: Props) => {
-  const [setResult, setSetResult] = useState<SetCbArgs>({});
-  const onFinish = (values: FormValues) => {
-    setApiKey(values.apiKey, (args: SetCbArgs) => {
-      setSetResult(args);
-    });
-  };
+  ]
   return (
     <div>
-      <div className="pasm">
-        <h1>Please set openAI apiKey.</h1>
-        <Form
-          name="setApiKey"
-          initialValues={{ apiKey: '' }}
-          onFinish={onFinish}
-          className="pbsm"
-        >
-          <Space>
-            <Form.Item
-              name="apiKey"
-              style={{ marginBottom: 0 }}
-              rules={[{ required: true, message: '' }]}
-            >
-              <Input
-                className="input"
-                placeholder="Type a apiKey"
-              />
-            </Form.Item>
-            <Form.Item style={{ marginBottom: 0 }}>
-              <Button type="primary" htmlType="submit">Submit</Button>
-            </Form.Item>
-          </Space>
-        </Form>
-        {
-          setResult.status === 200 ?
-          <Alert message="success" type="success" showIcon />
-          :
-          setResult.error ?
-          <Alert message={setResult.error} type="error" showIcon />
-          : ''
-        }
-      </div>
-      <Chatbot {...props} />
+      <h1>Example</h1>
+      <Chatbot
+        title="机器人客服为您服务"
+        greet="您好，很高兴为您服务。"
+        dialogues={dialogues}
+        failTips=""
+        historyMessages={[]}
+        onReply={(message: Message) => {
+          console.log("回复消息：", message)
+        }}
+        getMessages={(messages: Message[]) => {
+          console.log("消息列表：", messages)
+        }}
+        theme="blue"
+      />
     </div>
   )
 }

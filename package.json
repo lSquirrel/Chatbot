@@ -1,8 +1,20 @@
 {
-  "name": "my-react-app",
+  "name": "react-chatbot",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/react-chatbot.umd.cjs",
+  "module": "./lib/react-chatbot.js",
+  "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/react-chatbot.js",
+      "require": "./lib/react-chatbot.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,13 +23,24 @@
   },
   "dependencies": {
     "antd": "^5.11.2",
-    "axios": "^1.6.2",
+    "fuse.js": "^7.0.0",
     "moment": "^2.29.4",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.19.0"
+  },
+  "peerDependencies": {
+    "antd": "^5.11.2",
+    "fuse.js": "^7.0.0",
+    "moment": "^2.29.4",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",

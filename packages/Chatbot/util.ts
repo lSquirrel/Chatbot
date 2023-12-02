@@ -36,7 +36,3 @@ export const getChatTime = (timeValue: number) => {
   }
   return returnTime;
 }
-
-export const createId = () => {
-  return 'id' + Date.now();
-}
