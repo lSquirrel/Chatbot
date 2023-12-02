@@ -9,6 +9,7 @@
   "main": "./lib/react-chatbot.umd.cjs",
   "module": "./lib/react-chatbot.js",
   "typings": "./lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/react-chatbot.js",
