@@ -12,7 +12,7 @@ export default defineConfig({
     outDir: 'lib',
     // 防止 vite 将 rgba() 颜色转化为 #RGBA 十六进制
     cssTarget: 'chrome61',
-    copyPublicDir: false,
+    copyPublicDir: true,
     lib: {
       // 组件库源码的入口文件
       entry: resolve('packages/index.ts'),
