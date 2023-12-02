@@ -2,10 +2,10 @@
 
 使用react框架实现自动回复客服聊哦天框，配置聊天问答模板列表，通过模糊匹配问答列表中的问题，找到适配度最高的内容进行回复。
 
-|![手机端截图](public/display/mobile1.jpg) | 
+|![手机端截图](lib/display/mobile1.jpg) | 
 |:--:| 
 | *手机端截图* |
-|![点击底部提示效果图](public/display/mobile2.jpg) | 
+|![点击底部提示效果图](lib/display/mobile2.jpg) | 
 | *点击底部提示效果图* |
 
 ## 框架
