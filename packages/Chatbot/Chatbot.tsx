@@ -15,6 +15,7 @@ export interface Dialogue {
   reply: string,
   isDefault?: boolean
 }
+type Theme = 'default' | 'green' | 'blue';
 export interface ChatbotProps {
   title?: string, // 标题
   greet?: string, // 一进来显示的打招呼内容
@@ -25,14 +26,15 @@ export interface ChatbotProps {
   historyMessages?: Message[], // 历史对话数据
   onReply?: Function, // 返回当前回复message
   getMessages?: Function, // 获取历史记录
-  theme?: string // 主题 default blue green
+  theme?: Theme // 主题 default blue green
 }
+type MessageType = 'content' | 'list';
 export interface Message {
   createdAt: number,
   role: string, // 发送这角色：user assistant
   content?: string, // 消息内容
   list?: string[], // 消息内容
-  type?: string // 消息类型: 默认是content list
+  type?: MessageType // 消息类型: 默认是content list
 }
 const defaultFailTips = '亲爱的用户，我不太懂您的意思。';
 

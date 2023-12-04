@@ -1,40 +1,49 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import Home from './app/Home';
-import { useEffect, useState } from 'react';
+import Chatbot, { Dialogue, Message } from '../packages/Chatbot';
+import React from 'react';
 
 function App() {
-  // 获取窗口尺寸
-  const getWindowSize = () => {
-    const width = window.innerWidth || 1200;
-    return {
-      width,
-      height: window.innerHeight,
-      isMobile: width < 769 ? true : false
+  const dialogues: Dialogue[] = [
+    {
+      question: '你好',
+      reply: '您好，请问有什么可以帮助您的吗？'
+    },
+    {
+      question: '购买商品流程',
+      reply: '打开APP，进入商品列表页浏览，选择感兴趣的商品点击，进入详情页，查看详细信息。',
+      isDefault: true
+    },
+    {
+      question: '退款流程',
+      reply: '打开APP，点击“我的”，点击”订单“，在订单列表找到想要退款的物品，点击”退款“按钮。',
+      isDefault: true
+    },
+    {
+      question: '怎么申请退款或者退货',
+      reply: '打开APP，点击”我的“，点击”订单“，在订单列表找到想要退款的物品，点击”退款“或者”退货“按钮。',
+    },
+    {
+      question: '卖家不退款怎么办',
+      reply: '如您已经申请退款，卖家超时未处理，系统会自动同意您的退款申请；如果卖家拒绝了您的申请，您可选择平台介入，我们帮您处理。'
     }
-  }
-  
-  const [props, setProps] = useState(getWindowSize());
-  
-  const handleResize = () => {
-    setProps({
-      ...props,
-      ...getWindowSize()
-    })
-  }
-  useEffect(() => {
-    // 监听窗口变化
-    window.addEventListener('resize', handleResize);
-    // 卸载时销毁监听
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, [])
+  ]
   return (
     <div className='App'>
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
+      <h1>Example</h1>
+      <Chatbot
+        title="机器人客服为您服务"
+        greet="您好，很高兴为您服务。"
+        dialogues={dialogues}
+        failTips=""
+        historyMessages={[]}
+        onReply={(message: Message) => {
+          console.log("回复消息：", message)
+        }}
+        getMessages={(messages: Message[]) => {
+          console.log("消息列表：", messages)
+        }}
+        theme="blue"
+      />
     </div>
   )
 }

@@ -7,6 +7,9 @@ function resolve(str: string) {
 }
 
 export default defineConfig({
+  optimizeDeps: {
+    include: ['isquirrel-react-chatbot']
+  },
   build: {
     // 打包输出的目录
     outDir: 'lib',

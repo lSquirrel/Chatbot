@@ -21,7 +21,7 @@ npm install isquirrel-react-chatbot
 
 ## 使用方式
 ```javascript
-import Chatbot, { Dialogue } from "isquirrel-react-chatbot";
+import { Chatbot, Dialogue, Message } from "isquirrel-react-chatbot";
 
 const App = () => {
   // 聊天问答列表
@@ -52,7 +52,7 @@ const App = () => {
 }
 
 
-export default Home;
+export default App;
 ```
 
 ### props
