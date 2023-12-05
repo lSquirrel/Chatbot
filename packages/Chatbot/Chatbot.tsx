@@ -198,12 +198,13 @@ const ChatDialog = React.memo((props: any) => {
     setIsSubmiting(false);
   }
 
+  const mainRef = useRef<HTMLDivElement>(null);
+
   // messages更新时的操作
   useEffect(() => {
     // 有新消息时将屏幕滚动到最下面
-    const mainEle = document.getElementById('main');
-    if (mainEle) {
-      mainEle.scrollTop = 999999;
+    if (mainRef.current) {
+      mainRef.current.scrollTop = 999999
     }
 
     // messages更新时返回完整的历史记录
@@ -238,7 +239,7 @@ const ChatDialog = React.memo((props: any) => {
         <div className="fs6 bold">{title || '机器人客服为您服务'}</div>
         <CloseCircleOutlined style={{ fontSize: 26 }} className="icon-close pointer" onClick={onClose} />
       </header>
-      <main id="main" className="box plsm prsm pbsm overflow-y-auto">
+      <main id="main" ref={mainRef} className="box plsm prsm pbsm overflow-y-auto">
         {
           messages.map((item, key) => {
             if (item) {
